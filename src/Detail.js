@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -15,6 +15,10 @@ let Title = styled.h4`
 
 
 function Detail(props){
+  
+    let {id} = useParams();
+    let [alert,setAlert] = useState(true);
+    let [input,setInput] = useState('');
 
     useEffect(()=>{
     //  let timer = setTimeout(()=>{
@@ -22,16 +26,18 @@ function Detail(props){
     //   element.classList.toggle("disappear");
     //  },2000)
 
-    return function a(){};
-    });  
-
+      let timer = setTimeout(()=>{
+        setAlert(false);
+      },2000)
+      console.log("hi")
+      return ()=>{clearTimeout(timer)}
+    },[]);  
 
 
   
   
-  let {id} = useParams();
-    
-    
+  
+ 
 
     // // I used for loop to find matched product
     // function matchPrdocut(){
@@ -59,10 +65,23 @@ function Detail(props){
           <Title className ="red">Detail</Title>
         </Box>
 
+        <input onChange={(e)=>{setInput(e.target.value)}}/>
+        {console.log(input)}
+        {/* 1. It is using toggle for alert to disappear
         <div id="alertDiv" className="my-alert2" >
           <p>It's almost sold out!</p>
-        </div>
+        </div> */}
+
+        {/* 2. using state and ternary operator */}
         
+        {alert===true
+        ?
+          <div  className="my-alert2" >
+          <p>It's almost sold out!</p>
+          </div>
+        : null 
+        }
+       
         <div className="row">
         <div className="col-md-6">
           <img src={'https://codingapple1.github.io/shop/shoes'+(product.id+1)+'.jpg'} width="100%" />

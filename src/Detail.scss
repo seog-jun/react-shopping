@@ -1,0 +1,50 @@
+@import './_reset.scss';
+
+
+$mainColor : #ff0000;
+
+.red{
+    color: $mainColor;
+} 
+@mixin function() {
+    background-color: #eeeeee;
+    padding:15px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+} 
+.my-alert{
+   @include function();
+}
+
+.my-alert2{
+    @extend .my-alert;
+    background-color: #ffe591;
+}
+
+.my-alert p{
+    margin-bottom: 0;
+}
+
+.disappear{
+    display:none;
+}
+
+
+// div.container h4{
+//     color:blue
+// }
+
+// div.container p{
+//     color:green
+// }
+
+// div.container{
+//     h4{
+//         color:blue;
+//     }
+//     p{
+//         color:green;
+//     }
+// }

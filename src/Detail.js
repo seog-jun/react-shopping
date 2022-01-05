@@ -1,10 +1,36 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import './Detail.scss';
+
+let Box = styled.div`
+  padding :20px;
+`;
+
+let Title = styled.h4`
+  font-size:25px;
+  color:${props=>props.color}
+`;
+
 
 function Detail(props){
 
-    let {id} = useParams();
+    useEffect(()=>{
+    //  let timer = setTimeout(()=>{
+    //   var element = document.getElementById("alertDiv");
+    //   element.classList.toggle("disappear");
+    //  },2000)
+
+    return function a(){};
+    });  
+
+
+
+  
+  
+  let {id} = useParams();
+    
     
 
     // // I used for loop to find matched product
@@ -27,7 +53,17 @@ function Detail(props){
     
     return (
       <div className="container">
-      <div className="row">
+        
+        <Box>
+          {/* <Title color={'red'}>Detail</Title> */}
+          <Title className ="red">Detail</Title>
+        </Box>
+
+        <div id="alertDiv" className="my-alert2" >
+          <p>It's almost sold out!</p>
+        </div>
+        
+        <div className="row">
         <div className="col-md-6">
           <img src={'https://codingapple1.github.io/shop/shoes'+(product.id+1)+'.jpg'} width="100%" />
         </div>
@@ -36,13 +72,12 @@ function Detail(props){
           <p>{product.content}</p>
           <p>{product.price}</p>
           <button className="btn btn-danger">Buy Now</button> 
+          &nbsp;
           <button className="btn btn-danger" onClick={()=>{
               history.push('/');
           }}>Back</button> 
             {    
-        props.shoes.forEach((e) => {
-        console.log(e.id);
-      })
+      
       }
         </div>
        </div>
@@ -51,3 +86,22 @@ function Detail(props){
   }
 
   export default Detail;
+
+
+
+
+
+
+
+
+
+
+  // class Detail2 extends React.Component{
+
+  //   componentDidMount(){
+
+  //   }
+  //   componentWillUnmount(){
+      
+  //   }
+  // }
